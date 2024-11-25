@@ -2,8 +2,14 @@
 import Layout from "../layouts/Layout.astro";
 import { products } from "../data/products";
 
-const { product } = Astro.params;
+export function getStaticPaths() {
+  return products.map((product) => ({
+    params: { product: product.id },
+    props: { product },
+  }));
+}
 
+const { product } = Astro.params;
 const info = products.find((p) => p.id === product);
 
 if (!info) {
