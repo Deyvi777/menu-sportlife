@@ -1,0 +1,38 @@
+---
+export interface Props {
+  id: string;
+  title: string;
+  img: string;
+  price: number;
+}
+const { id, title, img, price } = Astro.props;
+---
+
+<div
+  class="w-full max-w-sm bg-emerald-100 border border-gray-200 rounded-xl shadow transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-2xl"
+>
+  <a href={`/${id}`}>
+    <div class="flex items-center justify-between mt-2.5 px-8">
+      <div
+        class="text-gray-500 bg-emerald-200 font-medium rounded-2xl text-sm px-2 py-1 text-center"
+      >
+        Nuevo
+      </div>
+      <span class="text-lg font-semibold text-gray-700">{price} Bs.</span>
+    </div>
+    <img
+      transition:name={`img-${id}`}
+      class="p-2 rounded-t-lg"
+      src={img}
+      alt={`Producto: ${title}`}
+    />
+    <div class="px-5 pb-5">
+      <h1
+        transition:name={`title-${id}`}
+        class="text-3xl font-black tracking-tight text-gray-900 text-center"
+      >
+        {title}
+      </h1>
+    </div>
+  </a>
+</div>
