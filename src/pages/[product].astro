@@ -2,7 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import { products } from "../data/products";
 
-export function getStaticPaths() {
+export async function getStaticPaths() {
   return products.map((product) => ({
     params: { product: product.id },
     props: { product },
